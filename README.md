@@ -2,7 +2,7 @@
 [![readme.jpg](https://anopic.ag/YUuttmGnZB1PeYfLv4El5IZqA2oWDrn4aMkVwrnF.jpg)](https://anopic.ag/YUuttmGnZB1PeYfLv4El5IZqA2oWDrn4aMkVwrnF.jpg)
 
 ## Project Description
-In this project we are implementing a telegram bot that provides analytics of a news resource using NLP.
+In this project we are implementing a telegram bot [@news_class_bot](https://t.me/news_class_bot) that provides analytics of a news resource using NLP.
 
 fontanka.ru is used as a news resource
 
@@ -16,8 +16,8 @@ fontanka.ru is used as a news resource
   - [Parsing](#parsing)
   - [Exploratory Data Analysis](#exploratory-data-analysis)
   - [Classification problem](#classification-problem)
+  - [Bot Functionality](#bot-functionality)
   - [Deployment](#deployment)
-  - [How to Use the Project](#how-to-use-the-project)
   - [Include Credits](#include-credits)
     - [Author](#author)
   - [License](#license)
@@ -25,9 +25,14 @@ fontanka.ru is used as a news resource
 ## Files
 - [fontanka_parsing.ipynb](https://github.com/moxeeem/NewsBot/blob/main/fontanka_parsing.ipynb) : Jupyter Notebook with Exploratory Data Analysis and parsing
 - [classification.ipynb](https://github.com/moxeeem/NewsBot/blob/main/classification.ipynb) : Jupyter Notebook with ML pipelines
-- [xgboost_mv.pkl](https://github.com/moxeeem/NewsBot/blob/main/xgboost_mv.pkl) : Cloudpickle file with XGBoost classifier and Word2Vec
-- [svc_mv.pkl](https://github.com/moxeeem/NewsBot/blob/main/xgboost_mv.pkl) : Cloudpickle file with SVM classifier and Word2Vec
-- [parser.ipynb](https://github.com/moxeeem/NewsBot/blob/main/parser.ipynb) : An improved parser 
+- [bot/svc_mv.pkl](https://github.com/moxeeem/NewsBot/blob/main/bot/xgboost_mv.pkl) : Cloudpickle file with SVM classifier and Word2Vec
+- [bot/parser.ipynb](https://github.com/moxeeem/NewsBot/blob/main/bot/parser.ipynb) : An improved parser 
+- [bot/text_prep.py](https://github.com/moxeeem/NewsBot/blob/main/bot/text_prep.py) : Text preprocessing function
+- [bot/requirements.txt](https://github.com/moxeeem/NewsBot/blob/main/bot/requirements.txt) : Project's requirements
+- [bot/keyboards.py](https://github.com/moxeeem/NewsBot/blob/main/bot/keyboards.py) : Bot's keyboards
+- [bot/main.py](https://github.com/moxeeem/NewsBot/blob/main/bot/main.py) : A file with bot realisation
+
+
 
 ## Dataset
 The dataset used to build the models was created by parsing news articles from the website fontanka.ru. The news is divided into topics that make up the classes. The classes are absolutely balanced.
@@ -89,16 +94,27 @@ In this project we did text preprocessing using the Natasha library. More specif
 
 Also we've trained Word2Vec for our news data and got an adequate result.
 
-The project uses XGBoost with MeanEmbeddingVectorizer to classify texts. Accuracy of such a model is 0.78 (we also explained why we rely on this metric). * Or SVM with MeanEmbeddingVectorizer (accuracy = 0.77)*
+The project uses SVM with MeanEmbeddingVectorizer to classify texts. Accuracy of such a model is 0.77 (we also explained why we rely on this metric).
+
+Despite the best performance of the XGBoost with MeanEmbeddingVectorizer model (accuracy = 0.78), we decided not to sacrifice memory and speed and chose SVM.
     
 If this classifier makes a mistake, it will most likely confuse the class `Общество` with `Город` or `Политика`. This is not a big deal, because these topics are quite related.
 
 
-## Deployment
-Under development
+## Bot Functionality
+The Telegram bot offers the user three main functionalities:
 
-## How to Use the Project
-Under development
+- **Predictions**
+  The bot uses a previously trained classifier to predict the relationship of a particular day's news to a particular date
+- **Visualizations**
+  The bot offers the ability to plot pie charts and word clouds for news for a particular day.
+- **News by topic**
+  The bot allows you to determine the most relevant news for a particular day. This is done by comparing user topic vectors and news vectors by cosine measure.
+
+
+## Deployment
+The final part of the project was to move it to a VPS. This was successfully implemented and now the bot is available here - [@news_class_bot](https://t.me/news_class_bot).
+
 
 ## Include Credits
 
