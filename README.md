@@ -1,8 +1,7 @@
 # 📰 News Analytics Bot
-[![readme.jpg](https://anopic.ag/YUuttmGnZB1PeYfLv4El5IZqA2oWDrn4aMkVwrnF.jpg)](https://anopic.ag/YUuttmGnZB1PeYfLv4El5IZqA2oWDrn4aMkVwrnF.jpg)
-
+![img](https://github.com/moxeeem/NewsBot/blob/main/img.jpeg)
 ## Project Description
-In this project we are implementing a telegram bot [@news_class_bot](https://t.me/news_class_bot) that provides analytics of a news resource using NLP.
+In this project we are implementing a telegram bot that provides analytics of a news resource using NLP.
 
 fontanka.ru is used as a news resource
 
@@ -113,7 +112,7 @@ The Telegram bot offers the user three main functionalities:
 
 
 ## Deployment
-The final part of the project was to move it to a VPS. This was successfully implemented and now the bot is available here - [@news_class_bot](https://t.me/news_class_bot).
+The final part of the project was to move it to a VPS. This was successfully implemented.
 
 
 ## Include Credits
